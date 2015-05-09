@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <bean id="robotSony" class="robot.Robot">
+              <constructor-arg ref="sonyhead"/>
+              <constructor-arg ref="sonyhand"/>
+              <constructor-arg ref="sonyleg"/>
+       </bean>
+
+       <bean id="robotToshiba" class="robot.Robot">
+              <property name="head" ref="toshibahead"/>
+              <property name="hand" ref="toshibahand"/>
+              <property name="leg" ref="toshibaleg"/>
+       </bean>
+
+       <bean id="robotSamsung" class="robot.Robot">
+              <property name="head">
+                     <bean id="samsungHead" class="robot.brand.samsung.SamsungHead"/>
+              </property>
+              <property name="hand">
+                     <bean id="samsungHand" class="robot.brand.samsung.SamsungHand"/>
+              </property>
+              <property name="leg">
+                     <bean id="samsungLeg" class="robot.brand.samsung.SamsungLeg"/>
+              </property>
+       </bean>
+
+       <bean id="toshibahead" class="robot.brand.toshiba.ToshibaHead"/>
+       <bean id="toshibahand" class="robot.brand.toshiba.ToshibaHand"/>
+       <bean id="toshibaleg" class="robot.brand.toshiba.ToshibaLeg"/>
+
+       <bean id="sonyhead" class="robot.brand.sony.SonyHead"/>
+       <bean id="sonyhand" class="robot.brand.sony.SonyHand"/>
+       <bean id="sonyleg" class="robot.brand.sony.SonyLeg"/>
+</beans>
