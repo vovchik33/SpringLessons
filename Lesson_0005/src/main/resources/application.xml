@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <bean id="robotFactory" class="robot.RobotFactory"/>
+       <bean id="sonyRobot" factory-bean="robotFactory" factory-method="getRobot">
+              <constructor-arg><bean class="robot.brand.sony.SonyHead"/></constructor-arg>
+              <constructor-arg><bean class="robot.brand.sony.SonyHand"/></constructor-arg>
+              <constructor-arg><bean class="robot.brand.sony.SonyLeg"/></constructor-arg>
+       </bean>
+       <bean id="samsungRobot" factory-bean="robotFactory" factory-method="getRobot">
+              <constructor-arg><bean class="robot.brand.samsung.SamsungHead"/></constructor-arg>
+              <constructor-arg><bean class="robot.brand.samsung.SamsungHand"/></constructor-arg>
+              <constructor-arg><bean class="robot.brand.samsung.SamsungLeg"/></constructor-arg>
+       </bean>
+       <bean id="toshibaRobot" factory-bean="robotFactory" factory-method="getRobot">
+              <constructor-arg><bean class="robot.brand.toshiba.ToshibaHead"/></constructor-arg>
+              <constructor-arg><bean class="robot.brand.toshiba.ToshibaHand"/></constructor-arg>
+              <constructor-arg><bean class="robot.brand.toshiba.ToshibaLeg"/></constructor-arg>
+       </bean>
+       <bean id="robotList" class="robot.RobotList">
+              <property name="robots">
+                     <list>
+                            <ref bean="sonyRobot"/>
+                            <ref bean="samsungRobot"/>
+                            <ref bean="toshibaRobot"/>
+                     </list>
+              </property>
+       </bean>
+</beans>
