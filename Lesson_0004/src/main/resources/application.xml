@@ -2,5 +2,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-       
+       <bean id="robotFactory" class="robot.RobotFactory"/>
+       <bean id="robotSony" factory-bean="robotFactory" factory-method="getRobot">
+              <property name="head">
+                     <bean class="robot.brand.sony.SonyHead"/>
+              </property>
+              <property name="hand">
+                     <bean class="robot.brand.sony.SonyHand"/>
+              </property>
+              <property name="leg">
+                     <bean class="robot.brand.sony.SonyLeg"/>
+              </property>
+       </bean>
+       <bean id="robotToshiba" factory-bean="robotFactory" factory-method="getRobot">
+              <constructor-arg ref="toshibaHead"/>
+              <constructor-arg ref="toshibaHand"/>
+              <constructor-arg ref="toshibaLeg"/>
+       </bean>
+
+       <bean id="robotSamsung" factory-bean="robotFactory" factory-method="getRobot">
+              <constructor-arg><bean class="robot.brand.samsung.SamsungHead"/> </constructor-arg>
+              <constructor-arg><bean class="robot.brand.samsung.SamsungHand"/> </constructor-arg>
+              <constructor-arg><bean class="robot.brand.samsung.SamsungLeg"/> </constructor-arg>
+       </bean>
+
+       <bean id="toshibaHead" class="robot.brand.toshiba.ToshibaHead"/>
+       <bean id="toshibaHand" class="robot.brand.toshiba.ToshibaHand"/>
+       <bean id="toshibaLeg" class="robot.brand.toshiba.ToshibaLeg"/>
 </beans>

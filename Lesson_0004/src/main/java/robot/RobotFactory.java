@@ -1,26 +1,33 @@
 package robot;
 
 import org.springframework.beans.factory.FactoryBean;
+import robot.detail.IHand;
+import robot.detail.IHead;
+import robot.detail.ILeg;
 
 /**
  * Created by unclejoe33 on 10.05.2015.
  */
-public class RobotFactory implements FactoryBean<Robot> {
-    public Robot getRobotInstance() throws Exception {
+public class RobotFactory implements FactoryBean<RobotFactory> {
+
+    public Robot getRobot() throws Exception {
         return new Robot();
     }
 
-    @Override
-    public Robot getObject() throws Exception {
-        return null;
+    public Robot getRobot(IHead head, IHand hand, ILeg leg) throws Exception {
+        Robot robot=new Robot(head, hand, leg);
+        robot.mountDetails();
+        return robot;
     }
 
-    @Override
+    public RobotFactory getObject() throws Exception {
+        return this;
+    }
+
     public Class<?> getObjectType() {
-        return Robot.class;
+        return RobotFactory.class;
     }
 
-    @Override
     public boolean isSingleton() {
         return true;
     }
