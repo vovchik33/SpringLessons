@@ -14,13 +14,13 @@
                      <bean class="robot.brand.sony.SonyLeg"/>
               </property>
        </bean>
-       <bean id="robotToshiba" factory-bean="robotFactory" factory-method="getRobot">
+       <bean id="robotToshiba" factory-bean="robotFactory" factory-method="getRobot" init-method="mountDetails">
               <constructor-arg ref="toshibaHead"/>
               <constructor-arg ref="toshibaHand"/>
               <constructor-arg ref="toshibaLeg"/>
        </bean>
 
-       <bean id="robotSamsung" factory-bean="robotFactory" factory-method="getRobot">
+       <bean id="robotSamsung" factory-bean="robotFactory" factory-method="getRobot" init-method="mountDetails" destroy-method="unmountDetails">
               <constructor-arg><bean class="robot.brand.samsung.SamsungHead"/> </constructor-arg>
               <constructor-arg><bean class="robot.brand.samsung.SamsungHand"/> </constructor-arg>
               <constructor-arg><bean class="robot.brand.samsung.SamsungLeg"/> </constructor-arg>

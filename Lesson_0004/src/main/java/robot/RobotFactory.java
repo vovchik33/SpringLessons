@@ -16,7 +16,7 @@ public class RobotFactory implements FactoryBean<RobotFactory> {
 
     public Robot getRobot(IHead head, IHand hand, ILeg leg) throws Exception {
         Robot robot=new Robot(head, hand, leg);
-        robot.mountDetails();
+        //robot.mountDetails();
         return robot;
     }
 

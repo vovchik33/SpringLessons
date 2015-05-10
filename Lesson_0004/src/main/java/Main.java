@@ -19,6 +19,6 @@ public class Main {
 
         Robot robotToshiba = (Robot) context.getBean("robotToshiba");
         //robotToshiba.mountDetails();
-        robotToshiba.unmountDetails();
+        //robotToshiba.unmountDetails();
     }
 }
